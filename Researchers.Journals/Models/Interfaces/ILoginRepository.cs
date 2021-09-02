@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Researchers.Journals.Models.Interfaces
 {
-    public interface ILoginRepository : IGenericRepository<Login>
+    public interface ILoginRepository 
     {
         Task<Login> CreateLogin(Login login);
 
@@ -13,7 +13,7 @@ namespace Researchers.Journals.Models.Interfaces
 
         Task<Login> UpdateLoginDetails(Login login);
 
-        Task<Login> GetLoginDetails(int loginId);
+        Task<Login> GetLoginDetails(Login login);
 
         Task<Login> GetLoginByEmail(string email);
 

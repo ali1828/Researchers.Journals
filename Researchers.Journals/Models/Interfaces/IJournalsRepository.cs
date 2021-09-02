@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Researchers.Journals.Models.Interfaces
 {
-    public interface IJournalsRepository : IGenericRepository<Journals>
+    public interface IJournalsRepository 
     {
         Task<List<Journals>> GetJournalsByResearcherID(int researcherID);
 
@@ -19,7 +19,7 @@ namespace Researchers.Journals.Models.Interfaces
 
         bool DeleteJournal(Journals journal);
 
-        Task<Journals> GetJournalByResearcherID(int researcherID);
+        Task<Journals> GetJournalByJournalID(int journalID);
 
     }
 }

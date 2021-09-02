@@ -3,80 +3,99 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Researchers.Journals.Models.Data;
 using Researchers.Journals.Models.Interfaces;
 
 namespace Researchers.Journals.Models
 {
     public class JournalsRepository : IJournalsRepository
     {
-        public void Add(Journals entity)
+
+        private readonly ResearcherJournalDbContext _Context;
+        public JournalsRepository(ResearcherJournalDbContext context) : base()
         {
-            throw new NotImplementedException();
+            _Context = context;
         }
 
-        public void AddRange(IEnumerable<Journals> entities)
+        public async Task<Journals> CreateJournal(Journals journal)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Journals> CreateJournal(Journals journal)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                _Context.Add(journal);
+                _Context.SaveChanges();
+                return journal;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+          
         }
 
         public bool DeleteJournal(Journals journal)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _Context.Remove(journal);
+                _Context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+           
         }
 
-        public IEnumerable<Journals> Find(Expression<Func<Journals, bool>> expression)
+        public async Task<Journals> GetJournalByJournalID(int journalID)
         {
-            throw new NotImplementedException();
+            var result = _Context.Journals.Where(p => p.JournalID == journalID).FirstOrDefault();
+            if(result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public IEnumerable<Journals> GetAll()
+        public async Task<List<Journals>> GetJournals()
         {
-            throw new NotImplementedException();
+            return _Context.Journals.ToList();
         }
 
-        public Journals GetById(int id)
+        public async Task<Journals> GetJournalsByJournalName(string journalName)
         {
-            throw new NotImplementedException();
+            var result = _Context.Journals.Where(p => p.JournalName == journalName).FirstOrDefault();
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public Task<Journals> GetJournalByResearcherID(int researcherID)
+        public async Task<List<Journals>> GetJournalsByResearcherID(int researcherID)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Journals>> GetJournals()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Journals> GetJournalsByJournalName(string journalName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Journals>> GetJournalsByResearcherID(int researcherID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Journals entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRange(IEnumerable<Journals> entities)
-        {
-            throw new NotImplementedException();
+            var result = _Context.Journals.Where(p => p.ResearcherID == researcherID).ToList();
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Task<Journals> UpdateJournalDetails(Journals journal)
         {
-            throw new NotImplementedException();
+            _Context.Journals.Update(journal);
+            _Context.SaveChanges();
+            return journal;
         }
     }
 }

@@ -15,13 +15,13 @@ namespace Researchers.Journals.Models.Data
 
         }
 
-        DbSet<Journals> Journals { get; set; }
+        public DbSet<Journals> Journals { get; set; }
 
-        DbSet<Researcher> Researchers { get; set; }
+        public DbSet<Researcher> Researchers { get; set; }
 
-        DbSet<Subscribers> Subscribers { get; set; }
+        public DbSet<Subscribers> Subscribers { get; set; }
 
-        DbSet<Login> Logins { get; set; }
+        public DbSet<Login> Logins { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder model)

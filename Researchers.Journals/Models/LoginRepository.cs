@@ -3,43 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Researchers.Journals.Models.Data;
 using Researchers.Journals.Models.Interfaces;
 
 namespace Researchers.Journals.Models
 {
     public class LoginRepository : ILoginRepository
     {
-        public void Add(Login entity)
+
+        private readonly ResearcherJournalDbContext _Context;
+        public LoginRepository(ResearcherJournalDbContext context) : base()
         {
-            throw new NotImplementedException();
+            _Context = context;
         }
 
-        public void AddRange(IEnumerable<Login> entities)
+        public async Task<Login> CreateLogin(Login login)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Login> CreateLogin(Login login)
-        {
-            throw new NotImplementedException();
+            _Context.Add(login);
+            _Context.SaveChanges();
+            return login;
         }
 
         public void DeleteLogin(Login login)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Login> Find(Expression<Func<Login, bool>> expression)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Login> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Login GetById(int id)
         {
             throw new NotImplementedException();
         }
@@ -49,19 +34,15 @@ namespace Researchers.Journals.Models
             throw new NotImplementedException();
         }
 
-        public Task<Login> GetLoginDetails(int loginId)
+        public async Task<Login> GetLoginDetails(Login login)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Login entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRange(IEnumerable<Login> entities)
-        {
-            throw new NotImplementedException();
+            var loginResult = _Context.Logins.Where(p => p.Password == login.Password && 
+                             p.Email == login.Email).FirstOrDefault();
+            if (login != null)
+            {
+                return login;
+            }
+            return null;
         }
 
         public Task<Login> UpdateLoginDetails(Login login)

@@ -3,75 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Researchers.Journals.Models.Data;
 using Researchers.Journals.Models.Interfaces;
 
 namespace Researchers.Journals.Models
 {
     public class ResearchersRepository : IResearcherRepository
     {
-        public void Add(Researcher entity)
+        private readonly ResearcherJournalDbContext _Context;
+        public ResearchersRepository(ResearcherJournalDbContext context) : base()
         {
-            throw new NotImplementedException();
+            _Context = context;
         }
 
-        public void AddRange(IEnumerable<Researcher> entities)
+        public async Task<Researcher> AddResearcher(Researcher researcher)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Researcher> AddResearcher(Researcher researcher)
-        {
-            throw new NotImplementedException();
+            _Context.Add(researcher);
+            _Context.SaveChanges();
+            return researcher;
         }
 
         public bool DeleteResearcher(Researcher researcher)
         {
-            throw new NotImplementedException();
+            _Context.Remove(researcher);
+            _Context.SaveChanges();
+            return true;
         }
 
-        public IEnumerable<Researcher> Find(Expression<Func<Researcher, bool>> expression)
+        public async Task<List<Researcher>> GetResearcher()
         {
-            throw new NotImplementedException();
+            var researcherResult = _Context.Researchers.ToList();
+            return researcherResult;
         }
 
-        public IEnumerable<Researcher> GetAll()
+        public async Task<Researcher> GetResearcherByResearcherID(int researcherID)
         {
-            throw new NotImplementedException();
+            var result = _Context.Researchers.Where(p => p.ResearcherID == researcherID).FirstOrDefault();
+            return result;
         }
 
-        public Researcher GetById(int id)
+        public async Task<Researcher> GetResearcherByResearcherName(string researcherName)
         {
-            throw new NotImplementedException();
+            var result = _Context.Researchers.Where(p => p.ResearcherName == researcherName).FirstOrDefault();
+            return result;
         }
 
-        public Task<List<Researcher>> GetResearcher()
+        public async Task<Researcher> UpdateResearcherDetails(Researcher researcher)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Researcher> GetResearcherByResearcherID(int researcherID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Researcher> GetResearcherByResearcherName(string researcherName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Researcher entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRange(IEnumerable<Researcher> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Researcher> UpdateResearcherDetails(Researcher researcher)
-        {
-            throw new NotImplementedException();
+            _Context.Update(researcher);
+            _Context.SaveChanges();
+            return researcher;
         }
     }
 }

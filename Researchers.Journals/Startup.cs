@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Researchers.Journals.Models;
 using Researchers.Journals.Models.Data;
 using Researchers.Journals.Models.Interfaces;
 using System;
@@ -34,8 +35,10 @@ namespace Researchers.Journals
                    Configuration.GetConnectionString("ResearcherJournalDbContextConnection")));
 
             #region "Repositories"
-            //services.AddTransient<ILoginRepository, LoginRepository>();
-            //services.AddTransient<IProductsRepository, ProductsRepository>();
+            services.AddTransient<ILoginRepository, LoginRepository>();
+            services.AddTransient<ISubscriberRepository, SubscriberRepository>();
+            services.AddTransient<IJournalsRepository, JournalsRepository>();
+            services.AddTransient<IResearcherRepository, ResearchersRepository>();
             #endregion
         }
 

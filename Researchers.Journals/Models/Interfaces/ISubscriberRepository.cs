@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Researchers.Journals.Models.Interfaces
 {
-    public interface ISubscriberRepository : IGenericRepository<Subscribers>
+    public interface ISubscriberRepository 
     {
         Task<List<Subscribers>> GetAllSubscribers();
 
