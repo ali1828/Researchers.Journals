@@ -8,6 +8,7 @@ namespace Researchers.Journals.ViewModel
 {
     public class ViewMyJournalVM
     {
-        public List<Researchers.Journals.Models.Journals> MyJournals { get; set; }
+        public List<Researchers.Journals.Models.Journals> MyJournals
+            { get; set; } = new List<Models.Journals>();
     }
 }

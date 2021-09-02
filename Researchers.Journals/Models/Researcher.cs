@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,8 @@ namespace Researchers.Journals.Models
         [Required(ErrorMessage = "Researcher Name is Required", AllowEmptyStrings = false)]
         public string ResearcherName { get; set; }
 
+        [NotMapped]
+        public bool SubscribeToResearcher { get; set; } = false;
 
         #region "Navigation Properties"
 

@@ -12,13 +12,15 @@ namespace Researchers.Journals.Controllers
         [HttpPost]
         public IActionResult Login(LoginVM loginVM)
         {
-            return View(loginVM);
+            return RedirectToAction("ViewMyJournal", "Home");
+            //return View(loginVM);
         }
 
         [HttpGet]
         public IActionResult Login()
         {
             LoginVM loginVM = new LoginVM();
+            
             return View(loginVM);
         }
     }

@@ -7,5 +7,6 @@ namespace Researchers.Journals.ViewModel
 {
     public class SubscribeToResearcherVM
     {
+        public List<Researchers.Journals.Models.Researcher> ResearchersToSubscribed { get; set; } = new List<Models.Researcher>();
     }
 }

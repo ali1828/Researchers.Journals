@@ -1,10 +1,8 @@
-﻿@model Researchers.Journals.ViewModel.ViewJournalVM
+﻿@model Researchers.Journals.ViewModel.ViewMyJournalVM
 @{
 
-    ViewData["Title"] = "Subscribe To Researchers";
+    ViewData["Title"] = "View My Journals";
 }
-
-
 
 <!-- Content Wrapper-->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -224,16 +222,45 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+            <h1>View My Journals</h1>
 
-
-            <h1>View Journal</h1>
-
-
-
-
-
-
-
+            <section>
+                <form method="post" asp-action="JournalView" asp-controller="Home">
+                    <div class="form-group">
+                        <table id="memberlist" class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Journal ID</th>
+                                    <th scope="col">Journal Name</th>
+                                    <th scope="col">Uploaded Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var items in Model.MyJournals)
+                                {
+                                    <tr>
+                                        <td>@items.JournalID</td>
+                                        <td>@items.JournalName</td>
+                                        <td>@items.UploadedDate</td>
+                                        <td>
+                                            <button class="btn btn-primary" asp-controller="Home"
+                                                    asp-action="JournalView">
+                                                View Journal
+                                            </button>
+                                        </td>
+                                        @*@if (items.BillFailed)
+                                            {
+                                                <td><button class="btn btn-dark">Cancel</button></td>
+                                                <td><button class="btn btn-primary">Modify</button></td>
+                                                <td><button class="btn btn-secondary">Reschedule</button></td>
+                                            }*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </section>
 
 
         </div>

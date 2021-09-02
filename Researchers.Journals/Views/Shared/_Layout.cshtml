@@ -115,14 +115,54 @@
                 <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item active" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">Researchers</h6>
+
+                        <form class="user" method="get"
+                              asp-controller="Home"
+                              asp-action="UploadJournal">
+                            <a class="collapse-item" asp-action="UploadJournal"
+                                    asp-controller="Home">
+                                Upload Journal
+                            </a>
+                        </form>
+
+                        <form class="user" method="get"
+                              asp-controller="Home"
+                              asp-action="ViewMyJournal">
+                            <a class="collapse-item" asp-action="ViewMyJournal"
+                                    asp-controller="Home">
+                                View my Journals
+                            </a>
+                        </form>
+
+
+                        <form class="user" method="get"
+                              asp-controller="Home"
+                              asp-action="ViewSubscribedJournals">
+                            <a class="collapse-item" asp-action="ViewSubscribedJournals"
+                                    asp-controller="Home">
+                                View Subscribed Journals
+                            </a>
+                        </form>
+
+
+                        <form class="user" method="get"
+                              asp-controller="Home"
+                              asp-action="SubscribeToResearcher">
+                            <a class="collapse-item" asp-action="SubscribeToResearcher"
+                                    asp-controller="Home">
+                                Subscribe To Researchers
+                            </a>
+                         </form>
+
+                            <h6 class="collapse-header">Login Screens:</h6>
+                            <a class="collapse-item" href="login.html">Login</a>
+                            <a class="collapse-item" href="register.html">Register</a>
+                            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                            <div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Other Pages:</h6>
+                            <a class="collapse-item" href="404.html">404 Page</a>
+                            <a class="collapse-item active" href="blank.html">Blank Page</a>
                     </div>
                 </div>
             </li>
