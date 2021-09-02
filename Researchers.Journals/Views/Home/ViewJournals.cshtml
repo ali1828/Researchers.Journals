@@ -1,0 +1,43 @@
+﻿@model Researchers.Journals.ViewModel.ViewMyJournalVM
+@{
+
+    ViewData["Title"] = "View My Journals";
+}
+
+
+<h1>View My Journals</h1>
+
+<section>
+    <form method="post" asp-action="ViewMyJournal" asp-controller="Home">
+        <div class="form-group">
+            <label>Scheduled Bills</label>
+            <table id="memberlist" class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Journal ID</th>
+                        <th scope="col">Journal Name</th>
+                        <th scope="col">Uploaded Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var items in Model.MyJournals)
+                    {
+                        <tr>
+                            <td>@items.JournalID</td>
+                            <td>@items.JournalName</td>
+                            <td>@items.UploadedDate</td>
+                            <td><button class="btn btn-primary" asp-controller="Home" 
+                                        asp-action="ViewMyJournal">View Journal</button></td>
+                            @*@if (items.BillFailed)
+                            {
+                                <td><button class="btn btn-dark">Cancel</button></td>
+                                <td><button class="btn btn-primary">Modify</button></td>
+                                <td><button class="btn btn-secondary">Reschedule</button></td>
+                            }*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+</section>

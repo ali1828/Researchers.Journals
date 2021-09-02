@@ -1,0 +1,76 @@
+﻿@model Researchers.Journals.ViewModel.RegisterVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        <form class="user" method="post"
+                              asp-controller="Register"
+                              asp-action="RegisterAsResearcher">
+
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-5 mb-sm-0 col-lg-12">
+                                    <input type="text" class="form-control form-control-user"
+                                           id="exampleFirstName"
+                                           placeholder="Researcher Name"
+                                           asp-for="Login.ResearcherName">
+                                    <span asp-validation-for="Login.ResearcherName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                       placeholder="Email Address"
+                                       asp-for="Login.Email">
+                                <span asp-validation-for="Login.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-5 mb-sm-0 col-lg-12">
+                                    <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                           placeholder="User Name"
+                                           asp-for="Login.UserName">
+                                    <span asp-validation-for="Login.UserName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user"
+                                           id="exampleInputPassword" placeholder="Password"
+                                           asp-for="Login.Password">
+                                    <span asp-validation-for="Login.Password" class="text-danger"></span>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user"
+                                           id="exampleRepeatPassword" placeholder="Repeat Password"
+                                           asp-for="Login.ConfirmPassword">
+                                    <span asp-validation-for="Login.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block" asp-action="RegisterAsResearcher">
+                                Register Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

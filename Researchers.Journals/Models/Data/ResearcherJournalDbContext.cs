@@ -21,6 +21,8 @@ namespace Researchers.Journals.Models.Data
 
         DbSet<Subscribers> Subscribers { get; set; }
 
+        DbSet<Login> Logins { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder model)
         {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Researchers.Journals.Models;
+using Researchers.Journals.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,6 +28,24 @@ namespace Researchers.Journals.Controllers
         {
             return View();
         }
+
+
+
+        [HttpGet]
+        public IActionResult ViewMyJournal()
+        {
+            ViewMyJournalVM viewMyJournalVM = new ViewMyJournalVM();
+            return View(viewMyJournalVM);
+        }
+
+        [HttpPost]
+        public IActionResult ViewMyJournal(ViewMyJournalVM viewMyJournalVM)
+        {
+
+            return View(viewMyJournalVM);
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

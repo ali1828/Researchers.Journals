@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Researchers.Journals.Models.Data;
+using Researchers.Journals.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,11 @@ namespace Researchers.Journals
             services.AddDbContext<ResearcherJournalDbContext>(options =>
                options.UseSqlServer(
                    Configuration.GetConnectionString("ResearcherJournalDbContextConnection")));
+
+            #region "Repositories"
+            //services.AddTransient<ILoginRepository, LoginRepository>();
+            //services.AddTransient<IProductsRepository, ProductsRepository>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +63,7 @@ namespace Researchers.Journals
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Register}/{action=RegisterAsResearcher}/{id?}");
             });
         }
     }
