@@ -10,7 +10,7 @@ using Researchers.Journals.Models.Data;
 namespace Researchers.Journals.Migrations
 {
     [DbContext(typeof(ResearcherJournalDbContext))]
-    [Migration("20210902063956_JournalResearcher_InitialMigration")]
+    [Migration("20210902195605_JournalResearcher_InitialMigration")]
     partial class JournalResearcher_InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,43 @@ namespace Researchers.Journals.Migrations
                     b.HasIndex("ResearcherID");
 
                     b.ToTable("Journals");
+                });
+
+            modelBuilder.Entity("Researchers.Journals.Models.Login", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConfirmPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("ResearcherAddedID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ResearcherName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logins");
                 });
 
             modelBuilder.Entity("Researchers.Journals.Models.Researcher", b =>

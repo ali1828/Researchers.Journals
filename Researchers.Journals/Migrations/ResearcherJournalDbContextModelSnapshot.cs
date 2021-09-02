@@ -66,6 +66,9 @@ namespace Researchers.Journals.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("ResearcherAddedID")
+                        .HasColumnType("int");
+
                     b.Property<string>("ResearcherName")
                         .IsRequired()
                         .HasMaxLength(200)

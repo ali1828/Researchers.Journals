@@ -24,7 +24,7 @@ namespace Researchers.Journals.Models
         public byte[] JournalDocument { get; set; }
 
         [Display(Name = "Upload Date")]
-        public DateTime UploadedDate { get; set; }
+        public DateTime UploadedDate { get; set; } = DateTime.Now;
 
 
         #region "Navigation Properties"

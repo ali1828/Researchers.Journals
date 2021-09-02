@@ -234,6 +234,7 @@
             }
             <section>
                 <form method="post" asp-action="SubscribeToResearcher" asp-controller="Home">
+
                     <div class="form-group">
                         <label>Select Researchers</label>
                         <table class="table table-bordered" id="tblCustomers">
@@ -248,7 +249,8 @@
                                 {
                                     <tr>
                                         <td>
-                                            @*<input type="hidden" asp-for=">@Model.ResearchersToSubscribed[i].ResearcherName" readonly="@true">*@
+                                            <input type="hidden" asp-for=">@Model.ResearchersToSubscribed[i].ResearcherName" readonly="@true">
+                                            <input type="hidden" asp-for=">@Model.ResearchersToSubscribed[i].ResearcherID" readonly="@true">
                                             @Model.ResearchersToSubscribed[i].ResearcherName
                                         </td>
                                         <td>

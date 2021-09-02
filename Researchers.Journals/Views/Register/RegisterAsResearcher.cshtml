@@ -3,8 +3,14 @@
 @{
     ViewData["Title"] = "Login";
 }
-
-
+@if (ViewBag.Success != null && ViewBag.Success)
+{
+    <h3 class="alert-success">Register successfully...</h3>
+}
+else if (ViewBag.Success != null && ViewBag.Success == false)
+{
+    <h3 class="alert-danger">Unable to Regsiter, Try Again...</h3>
+}
 
 <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
@@ -65,6 +71,10 @@
                             <button type="submit" class="btn btn-primary btn-user btn-block" asp-action="RegisterAsResearcher">
                                 Register Account
                             </button>
+
+                            <div class="text-center">
+                                <a class="small" asp-action="Login" asp-controller="Login">Already have an account? Login!</a>
+                            </div>
                         </form>
                     </div>
                 </div>

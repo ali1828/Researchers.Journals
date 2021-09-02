@@ -4,6 +4,16 @@
     ViewData["Title"] = "Login";
 }
 
+
+@if (ViewBag.Success != null && ViewBag.Success)
+{
+    <h3 class="alert-success">Successfully Login...</h3>
+}
+else if (ViewBag.Success != null && ViewBag.Success == false)
+{
+    <h3 class="alert-danger">Unable to Login, Try Again...</h3>
+}
+
 <div class="container">
 
     <!-- Outer Row -->
@@ -29,7 +39,7 @@
                                         <input type="email" class="form-control form-control-user"
                                                id="exampleInputEmail" aria-describedby="emailHelp"
                                                placeholder="Enter Email Address..."
-                                                asp-for="Login.Email">
+                                               asp-for="Login.Email">
                                         <span asp-validation-for="Login.Email" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
@@ -40,26 +50,26 @@
                                     </div>
                                     <div class="form-group">
                                         @*<div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">
-                                                Remember
-                                                Me
-                                            </label>
-                                        </div>*@
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">
+                                                    Remember
+                                                    Me
+                                                </label>
+                                            </div>*@
                                     </div>
                                     <button class="btn btn-primary btn-user btn-block"
-                                             type="submit" asp-action="Login">
+                                            type="submit" asp-action="Login">
                                         Login
                                     </button>
                                     <hr>
                                 </form>
                                 <hr>
                                 @*<div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
-                                </div>*@
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="register.html">Create an Account!</a>
+                                    </div>*@
                             </div>
                         </div>
                     </div>

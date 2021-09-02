@@ -38,9 +38,9 @@ namespace Researchers.Journals.Models
         {
             var loginResult = _Context.Logins.Where(p => p.Password == login.Password && 
                              p.Email == login.Email).FirstOrDefault();
-            if (login != null)
+            if (loginResult != null)
             {
-                return login;
+                return loginResult;
             }
             return null;
         }

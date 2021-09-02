@@ -91,7 +91,7 @@ namespace Researchers.Journals.Models
             }
         }
 
-        public Task<Journals> UpdateJournalDetails(Journals journal)
+        public async Task<Journals> UpdateJournalDetails(Journals journal)
         {
             _Context.Journals.Update(journal);
             _Context.SaveChanges();
